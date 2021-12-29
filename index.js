@@ -19,6 +19,20 @@ class CrewCandidate {
     return prettyAverage;
   }
 
+  status = (average) => {
+
+    average = typeof(average) !== 'undefined' ? average : this.average();
+
+    if(average > 90) {
+      return `Accepted`;
+    } else if(80 < average) {
+      return `Reserve`
+    } else if(average > 70) {
+      return `Probationary`
+    } else {
+      return `Rejected`
+    }
+  }
 }
 
 let bubbaBear = new CrewCandidate('Bubba Bear', 135, [88, 85, 90]);
@@ -27,7 +41,7 @@ let merryMaltese = new CrewCandidate('Merry Maltese', 1.5, [93, 88, 97]);
 
 let gladGator = new CrewCandidate('Glad Gator', 225, [75, 78, 62])
 
-console.log(merryMaltese.average())
+console.log(merryMaltese.status());
 
 //Add methods for adding scores, averaging scores and determining candidate status as described in the studio activity.
 
